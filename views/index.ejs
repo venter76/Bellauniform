@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Uniform</title>
+
+    
+      
+    
+    
+</head>
+<body>
+  <div class="container">
+  <h1 class="display-3 text-center">Fill in the numbers as you pack ...</h1>
+  
+  
+    <form action="/index" method="post">
+    <br>
+    <br>
+    <br>
+      <label for="houses">Which house are you at now?</label><br>
+      <select id="houses" name="houses">
+        <option value="Che">Che</option>
+        <option value="Stephen and Petra">Stephen and Petra</option>
+      </select>
+      <br>
+      <br>
+      <br>
+    <table class="table table-primary table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Total</th>
+            <th>S&P</th>
+            <th>Che</th>
+            <th>Bag</th>
+            <th>Wear</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+          
+              
+              <td><%= itemNames[0] %></td>
+              
+              <td><%= totals[0] %></td>
+            
+              <td><%= stePets[0] %></td>
+    
+              <td><%= ches[0] %></td>
+              
+            <td>
+              <input type="number" min="0" max="10" name="ttbag" >
+            </td>
+            <td>
+              <input type="number" min="0" max="10" name="ttwear">
+            </td>
+          </tr>
+
+          <tr>
+            <td><%= itemNames[1] %></td>
+            <td><%= totals[1] %></td>
+            <td><%= stePets[1] %></td>
+            <td><%= ches[1] %></td>
+          <td>
+              <input type="number" min="0" max="10" name="tpbag" >
+            </td>
+            <td>
+              <input type="number" min="0" max="10" name="tpwear">
+            </td>
+          </tr> 
+
+          <tr>
+          
+              
+            <td><%= itemNames[2] %></td>
+            
+            <td><%= totals[2] %></td>
+          
+            <td><%= stePets[2] %></td>
+  
+            <td><%= ches[2] %></td>
+            
+          <td>
+            <input type="number" min="0" max="10" name="jebag" >
+          </td>
+          <td>
+            <input type="number" min="0" max="10" name="jewear">
+          </td>
+        </tr>
+
+        <tr>
+          <td><%= itemNames[3] %></td>
+          <td><%= totals[3] %></td>
+          <td><%= stePets[3] %></td>
+          <td><%= ches[3] %></td>
+        <td>
+            <input type="number" min="0" max="10" name="trbag" >
+          </td>
+          <td>
+            <input type="number" min="0" max="10" name="trwear">
+          </td>
+        </tr> 
+
+        <tr>
+          
+              
+          <td><%= itemNames[4] %></td>
+          
+          <td><%= totals[4] %></td>
+        
+          <td><%= stePets[4] %></td>
+
+          <td><%= ches[4] %></td>
+          
+        <td>
+          <input type="number" min="0" max="10" name="wdbag" >
+        </td>
+        <td>
+          <input type="number" min="0" max="10" name="wdwear">
+        </td>
+      </tr>
+
+      <tr>
+        <td><%= itemNames[5] %></td>
+        <td><%= totals[5] %></td>
+        <td><%= stePets[5] %></td>
+        <td><%= ches[5] %></td>
+      <td>
+          <input type="number" min="0" max="10" name="lsbag" >
+        </td>
+        <td>
+          <input type="number" min="0" max="10" name="lswear">
+        </td>
+      </tr> 
+
+      <tr>
+          
+              
+        <td><%= itemNames[6] %></td>
+        
+        <td><%= totals[6] %></td>
+      
+        <td><%= stePets[6] %></td>
+
+        <td><%= ches[6] %></td>
+        
+      <td>
+        <input type="number" min="0" max="10" name="ssbag" >
+      </td>
+      <td>
+        <input type="number" min="0" max="10" name="sswear">
+      </td>
+    </tr>
+
+    <tr>
+      <td><%= itemNames[7] %></td>
+      <td><%= totals[7] %></td>
+      <td><%= stePets[7] %></td>
+      <td><%= ches[7] %></td>
+    <td>
+        <input type="number" min="0" max="10" name="skbag" >
+      </td>
+      <td>
+        <input type="number" min="0" max="10" name="skwear">
+      </td>
+    </tr> 
+
+    <tr>
+          
+              
+      <td><%= itemNames[8] %></td>
+      
+      <td><%= totals[8] %></td>
+    
+      <td><%= stePets[8] %></td>
+
+      <td><%= ches[8] %></td>
+      
+    <td>
+      <input type="number" min="0" max="10" name="blbag" >
+    </td>
+    <td>
+      <input type="number" min="0" max="10" name="blwear">
+    </td>
+  </tr>
+
+  <tr>
+    <td><%= itemNames[9] %></td>
+    <td><%= totals[9] %></td>
+    <td><%= stePets[9] %></td>
+    <td><%= ches[9] %></td>
+  <td>
+      <input type="number" min="0" max="10" name="sobag" >
+    </td>
+    <td>
+      <input type="number" min="0" max="10" name="sowear">
+    </td>
+  </tr> 
+
+  <tr>
+          
+              
+    <td><%= itemNames[10] %></td>
+    
+    <td><%= totals[10] %></td>
+  
+    <td><%= stePets[10] %></td>
+
+    <td><%= ches[10] %></td>
+    
+  <td>
+    <input type="number" min="0" max="10" name="rcbag" >
+  </td>
+  <td>
+    <input type="number" min="0" max="10" name="rcwear">
+  </td>
+</tr>
+
+<tr>
+  <td><%= itemNames[11] %></td>
+  <td><%= totals[11] %></td>
+  <td><%= stePets[11] %></td>
+  <td><%= ches[11] %></td>
+<td>
+    <input type="number" min="0" max="10" name="scbag" >
+  </td>
+  <td>
+    <input type="number" min="0" max="10" name="scwear">
+  </td>
+</tr> 
+
+<tr>
+          
+              
+  <td><%= itemNames[12] %></td>
+  
+  <td><%= totals[12] %></td>
+
+  <td><%= stePets[12] %></td>
+
+  <td><%= ches[12] %></td>
+  
+<td>
+  <input type="number" min="0" max="10" name="hkbag" >
+</td>
+<td>
+  <input type="number" min="0" max="10" name="hkwear">
+</td>
+</tr>
+
+<tr>
+<td><%= itemNames[13] %></td>
+<td><%= totals[13] %></td>
+<td><%= stePets[13] %></td>
+<td><%= ches[13] %></td>
+<td>
+  <input type="number" min="0" max="10" name="hsbag" >
+</td>
+<td>
+  <input type="number" min="0" max="10" name="hswear">
+</td>
+</tr> 
+
+<tr>
+          
+              
+  <td><%= itemNames[14] %></td>
+  
+  <td><%= totals[14] %></td>
+
+  <td><%= stePets[14] %></td>
+
+  <td><%= ches[14] %></td>
+  
+<td>
+  <input type="number" min="0" max="10" name="gsbag" >
+</td>
+<td>
+  <input type="number" min="0" max="10" name="gswear">
+</td>
+</tr>
+
+<tr>
+<td><%= itemNames[15] %></td>
+<td><%= totals[15] %></td>
+<td><%= stePets[15] %></td>
+<td><%= ches[15] %></td>
+<td>
+  <input type="number" min="0" max="10" name="gtbag" >
+</td>
+<td>
+  <input type="number" min="0" max="10" name="gtwear">
+</td>
+</tr> 
+
+<tr>
+          
+              
+  <td><%= itemNames[16] %></td>
+  
+  <td><%= totals[16] %></td>
+
+  <td><%= stePets[16] %></td>
+
+  <td><%= ches[16] %></td>
+  
+<td>
+  <input type="number" min="0" max="10" name="wtbag" >
+</td>
+<td>
+  <input type="number" min="0" max="10" name="wtwear">
+</td>
+</tr>
+
+<tr>
+<td><%= itemNames[17] %></td>
+<td><%= totals[17] %></td>
+<td><%= stePets[17] %></td>
+<td><%= ches[17] %></td>
+<td>
+  <input type="number" min="0" max="10" name="sebag" >
+</td>
+<td>
+  <input type="number" min="0" max="10" name="sewear">
+</td>
+</tr> 
+
+<tr>
+          
+              
+  <td><%= itemNames[18] %></td>
+  
+  <td><%= totals[18] %></td>
+
+  <td><%= stePets[18] %></td>
+
+  <td><%= ches[18] %></td>
+  
+<td>
+  <input type="number" min="0" max="10" name="stbag" >
+</td>
+<td>
+  <input type="number" min="0" max="10" name="stwear">
+</td>
+</tr>
+
+<tr>
+<td><%= itemNames[19] %></td>
+<td><%= totals[19] %></td>
+<td><%= stePets[19] %></td>
+<td><%= ches[19] %></td>
+<td>
+  <input type="number" min="0" max="10" name="spbag" >
+</td>
+<td>
+  <input type="number" min="0" max="10" name="spwear">
+</td>
+</tr> 
+
+<tr>
+          
+              
+  <td><%= itemNames[20] %></td>
+  
+  <td><%= totals[20] %></td>
+
+  <td><%= stePets[20] %></td>
+
+  <td><%= ches[20] %></td>
+  
+<td>
+  <input type="number" min="0" max="10" name="sgbag" >
+</td>
+<td>
+  <input type="number" min="0" max="10" name="sgwear">
+</td>
+</tr>
+
+<tr>
+<td><%= itemNames[21] %></td>
+<td><%= totals[21] %></td>
+<td><%= stePets[21] %></td>
+<td><%= ches[21] %></td>
+<td>
+  <input type="number" min="0" max="10" name="sjbag" >
+</td>
+<td>
+  <input type="number" min="0" max="10" name="sjwear">
+</td>
+</tr> 
+
+
+          
+        </tbody>
+      </table>
+      
+  
+      <br>
+      <br>
+      <br>
+    
+      <button class="btn btn-outline-primary" type="submit">Submit</button>
+
+      </form>
+      <a href="/export" class="btn btn-outline-primary">Download 1</a>
+      <a href="/download2" class="btn btn-outline-primary">Download 2</a>
+      <button onclick="window.location.href='/pdf?url=' + encodeURIComponent(window.location.href)">
+        Generate PDF
+    </button>
+    
+     
+
+      </div>
+
+
+    
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    
+</body>
+</html> 

@@ -1,0 +1,12 @@
+.center-table {
+    margin: 50;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .center-table th,
+  .center-table td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+  
