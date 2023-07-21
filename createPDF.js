@@ -4,7 +4,8 @@ const fs = require('fs');
 async function createPdf(url) {
   try {
     const browser = await puppeteer.launch({
-      executablePath: process.env.LOCAL_CHROME_PATH, // Use the correct environment variable.
+        executablePath: process.env.CHROME_PATH,
+    //   executablePath: process.env.LOCAL_CHROME_PATH, // Use the correct environment variable.
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
 
