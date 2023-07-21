@@ -6,7 +6,7 @@ const exportToExcel = require('./exportToExcel');
 const exportToExceel = require('./exportToExceel');
 const excelDownload = require('./excelDownload');
 const createPdf = require('./createPDF');
-
+const axios = require('axios');
 
 
 const app = express();
@@ -402,29 +402,63 @@ app.get('/download2', async (req, res) => {
 
 
 // Route to create PDF of screenshot (using pupputeer package):
+
+
+
+
+
+// Your other app setup and middleware
+
 app.get('/pdf', async (req, res) => {
   const { url } = req.query;
 
   if (!url) {
     return res.status(400).send('URL is required');
   }
-  console.log('Received URL:', url);
 
   try {
-    // Call the createPdf function with the provided URL.
-    const pdfData = await createPdf(url);
+    // Generate PDF using printPDF function
+    const pdf = await createPdf(url);
 
     // Set the response headers to specify the PDF content type and disposition.
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename=output.pdf');
+    res.set({ 'Content-Type': 'application/pdf', 'Content-Length': pdf.length });
 
-    // Send the PDF data as the response.
-    res.send(pdfData);
+    // Send the PDF as the response
+    res.send(pdf);
   } catch (error) {
     console.error(error);
-    res.status(500).send('An error occurred while creating the PDF');
+    res.status(500).send('An error occurred while generating the PDF');
   }
 });
+
+// Your other app routes and server start
+
+
+
+
+// app.get('/pdf', async (req, res) => {
+//   const { url } = req.query;
+
+//   if (!url) {
+//     return res.status(400).send('URL is required');
+//   }
+//   console.log('Received URL:', url);
+
+//   try {
+//     // Call the createPdf function with the provided URL.
+//     const pdfData = await createPdf(url);
+
+//     // Set the response headers to specify the PDF content type and disposition.
+//     res.setHeader('Content-Type', 'application/pdf');
+//     res.setHeader('Content-Disposition', 'attachment; filename=output.pdf');
+
+//     // Send the PDF data as the response.
+//     res.send(pdfData);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('An error occurred while creating the PDF');
+//   }
+// });
 
 
 connectDB().then(() => {
