@@ -11,6 +11,7 @@ const createPdf = require('./createPDF');
 
 const app = express();
 const PORT = process.env.PORT || 3000
+const path = require('path');
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
