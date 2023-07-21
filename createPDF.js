@@ -1,46 +1,31 @@
+const puppeteer = require('puppeteer-core');
+const fs = require('fs');
 
-// This uses pdfkit to render the HTML as a PDF
+async function createPdf(url) {
+  try {
+    const browser = await puppeteer.launch({
+      executablePath: process.env.LOCAL_CHROME_PATH, // Use the correct environment variable.
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
 
-// const PDFDocument = require('pdfkit');
-// const fs = require('fs');
-// const axios = require('axios'); // Import the axios module
+    const page = await browser.newPage();
 
-// async function createPdf(url) {
-//    const doc = new PDFDocument();
+    // Add logging for debugging purposes.
+    page.on('console', (message) => console.log(`Console log: ${message.text()}`));
+    page.on('error', (error) => console.error(`Page error: ${error}`));
+    page.on('pageerror', (error) => console.error(`Page error: ${error}`));
 
-//    // Create a write stream to save the PDF
-//    const writeStream = fs.createWriteStream('output.pdf');
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
 
-//    // Pipe the PDF document to the write stream
-//    doc.pipe(writeStream);
+    const pdfData = await page.pdf();
 
-//    try {
-//       // Fetch the HTML content of the URL using axios
-//       const response = await axios.get(url);
-//       const htmlContent = response.data;
+    await browser.close();
 
-//       // Add the HTML content to the PDF document using doc.text()
-//       doc.text(htmlContent);
+    return pdfData;
+  } catch (error) {
+    console.error('Error during PDF generation:', error);
+    throw new Error('Error generating PDF');
+  }
+}
 
-//       // Finalize the PDF document
-//       doc.end();
-
-//       return new Promise((resolve, reject) => {
-//          // Once the write stream finishes, resolve the promise with the PDF data
-//          writeStream.on('finish', () => {
-//             const pdfData = fs.readFileSync('output.pdf');
-//             resolve(pdfData);
-//          });
-
-//          // Handle any errors that occur during the write stream
-//          writeStream.on('error', (error) => {
-//             reject(error);
-//          });
-//       });
-//    } catch (error) {
-//       // Handle any errors that occur during the fetch or PDF generation
-//       throw new Error('Error fetching HTML content or generating PDF');
-//    }
-// }
-
-// module.exports = createPdf;
+module.exports = createPdf;

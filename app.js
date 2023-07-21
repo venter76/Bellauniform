@@ -405,20 +405,24 @@ app.get('/pdf', async (req, res) => {
   const { url } = req.query;
 
   if (!url) {
-      return res.status(400).send('URL is required');
+    return res.status(400).send('URL is required');
   }
 
   try {
-      const pdf = await createPdf(url);
-      res.set({ 'Content-Type': 'application/pdf', 'Content-Length': pdf.length });
-      res.send(pdf);
+    // Call the createPdf function with the provided URL.
+    const pdfData = await createPdf(url);
+
+    // Set the response headers to specify the PDF content type and disposition.
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=output.pdf');
+
+    // Send the PDF data as the response.
+    res.send(pdfData);
   } catch (error) {
-      console.error(error);
-      res.status(500).send('An error occurred while creating the PDF');
+    console.error(error);
+    res.status(500).send('An error occurred while creating the PDF');
   }
 });
-
-
 
 
 connectDB().then(() => {
