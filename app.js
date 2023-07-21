@@ -275,34 +275,8 @@ app.post("/index", function(req, res) {
 });
 
 
-// Export to Excel route and download file to server and user (using dodgy XLSL package)
-app.get('/export', async (req, res) => {
-  try {
-    if (!app.db) {
-      throw new Error('Database connection not established');
-    }
 
-    const collection = app.db.collection(collectionName);
 
-    // Retrieve data from collection
-    const data = await collection.find({}).toArray();
-
-    // Call the exportToExcel function
-    const filePath = await exportToExcel(data);
-
-    // Send the Excel file as a response
-    res.download(filePath);
-  } catch (error) {
-    console.error('Error exporting data2 to Excel:', error);
-    res.status(500).send('Error exporting data3 to Excel');
-  }
-});
-
-// Route to download file to server and for user download (using dodgy XLSL package):
-// app.get('/download', (req, res) => {
-//   const filePath = '/data/output.xlsx';
-//   res.download(`public${filePath}`);
-// });
 
 
 
@@ -340,26 +314,6 @@ app.get('/export', async (req, res) => {
 
 
 
-
-// Route to push file to user download only (using dodgy XLSL package):
-// app.get('/download2', async (req, res) => {
-//   try {
-//     if (!app.db) {
-//       throw new Error('Database connection not established');
-//     }
-
-//     const collection = app.db.collection(collectionName);
-
-//     // Retrieve data from collection
-//     const data = await collection.find({}).toArray();
-
-//     // Call the excelDownload function
-//     await excelDownload(data, res);
-//   } catch (error) {
-//     console.error('Error exporting data to Excel:', error);
-//     res.status(500).send('Error exporting data to Excel');
-//   }
-// });
 
 
 
@@ -401,13 +355,9 @@ app.get('/download2', async (req, res) => {
 
 
 
-// Route to create PDF of screenshot (using pupputeer package):
 
+// Using puppeteer-core to generate a PDF of the webpage view:
 
-
-
-
-// Your other app setup and middleware
 
 app.get('/pdf', async (req, res) => {
   const { url } = req.query;
@@ -431,34 +381,11 @@ app.get('/pdf', async (req, res) => {
   }
 });
 
-// Your other app routes and server start
 
 
 
 
-// app.get('/pdf', async (req, res) => {
-//   const { url } = req.query;
 
-//   if (!url) {
-//     return res.status(400).send('URL is required');
-//   }
-//   console.log('Received URL:', url);
-
-//   try {
-//     // Call the createPdf function with the provided URL.
-//     const pdfData = await createPdf(url);
-
-//     // Set the response headers to specify the PDF content type and disposition.
-//     res.setHeader('Content-Type', 'application/pdf');
-//     res.setHeader('Content-Disposition', 'attachment; filename=output.pdf');
-
-//     // Send the PDF data as the response.
-//     res.send(pdfData);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('An error occurred while creating the PDF');
-//   }
-// });
 
 
 connectDB().then(() => {
