@@ -408,6 +408,7 @@ app.get('/pdf', async (req, res) => {
   if (!url) {
     return res.status(400).send('URL is required');
   }
+  console.log('Received URL:', url);
 
   try {
     // Call the createPdf function with the provided URL.
